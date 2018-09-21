@@ -1,7 +1,7 @@
 {
     "AppSyncApiName": "baasexperiments",
-    "schemaGraphql": "s3://baasexperiments-20180921102853-deployment/amplify-appsync-files/schema.graphql.1537519787673",
+    "schemaGraphql": "s3://baasexperiments-20180921102853-deployment/amplify-appsync-files/schema.graphql.1537529048861",
     "ResolverBucket": "baasexperiments-20180921102853-deployment",
     "ResolverRootKey": "amplify-appsync-files",
-    "DeploymentTimestamp": "1537519787673"
+    "DeploymentTimestamp": "1537529048861"
 }

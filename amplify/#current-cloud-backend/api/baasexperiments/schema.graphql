@@ -9,7 +9,8 @@ type Location {
 
 type Session @model {
   id: ID!
-  date: AWSDate!
+  startsAt: AWSDateTime!
+  endsAt: AWSDateTime!
   name: String!
   description: String!
   location: Location!

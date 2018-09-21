@@ -1,11 +1,12 @@
 import React from 'react';
-import Amplify, { graphqlOperation }  from "aws-amplify";
-import { Connect } from "aws-amplify-react";
+import { Component, Fragment } from 'react';
+import Amplify, { graphqlOperation } from 'aws-amplify';
+import { Connect } from 'aws-amplify-react';
 import awsExports from './aws-exports';
 
 Amplify.configure(awsExports);
 
-const ListSessions = `  query ListSessions(
+const SessionListQuery = `  query ListSessions(
     $filter: ModelSessionFilterInput
     $limit: Int
     $nextToken: String
@@ -22,29 +23,76 @@ const ListSessions = `  query ListSessions(
   }
 `;
 
-class App extends React.Component {
+const CreateSessionMutation = `
+mutation CreateSession(
+  $name:String!, 
+  $startsAt: AWSDateTime!
+  $endsAt: AWSDateTime!
+){
+  createSession(input:{
+    name: $name
+    description: "asdfasdf"
+    startsAt: $startsAt
+    endsAt: $endsAt
+  }) {
+    id
+    endsAt
+        startsAt
+        name
+        description
+  }
+}
+`;
+
+const Json = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
+
+class CreateSession extends React.Component {
+    state = {
+        lastSessionCreated: null
+    };
 
     render() {
-
-        const ListView = ({ events }) => (
-            <div>
-                <h3>All events</h3>
-                <ul>
-                    {events && events.length && events.map(event => <li key={event.id}>{event.name} ({event.id})</li>)}
-                </ul>
-            </div>
-        );
-
-        console.log({
-            ListSessions
-        });
         return (
-            <Connect query={graphqlOperation(ListSessions)}>
-                {(...args) => (
-                    <pre>{JSON.stringify(args, null, 2)}</pre>
+            <Connect mutation={graphqlOperation(CreateSessionMutation)}>
+                {({ mutation }) => (
+                    <Fragment>
+                        <button
+                            onClick={async () => {
+                                this.setState({
+                                    lastSessionCreated: await mutation({
+                                        name: 'Some name',
+                                        startsAt: new Date(),
+                                        endsAt: new Date()
+                                    })
+                                });
+                            }}
+                        >
+                            Create Session
+                        </button>
+                        {this.state.lastSessionCreated && (
+                            <Json data={this.state.lastSessionCreated} />
+                        )}
+                    </Fragment>
                 )}
             </Connect>
-        )
+        );
+    }
+}
+
+const SessionList = () => (
+    <Connect query={graphqlOperation(SessionListQuery)}>
+        {data => <Json data={data} />}
+    </Connect>
+);
+
+class App extends React.Component {
+    render() {
+        return (
+            <Fragment>
+                <CreateSession />
+                <SessionList />
+            </Fragment>
+        );
     }
 }
 

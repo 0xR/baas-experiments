@@ -5,7 +5,8 @@ export const CreateSession = gql`
   mutation CreateSession($input: CreateSessionInput!) {
     createSession(input: $input) {
       id
-      date
+      startsAt
+      endsAt
       name
       description
       location {
@@ -22,7 +23,8 @@ export const UpdateSession = gql`
   mutation UpdateSession($input: UpdateSessionInput!) {
     updateSession(input: $input) {
       id
-      date
+      startsAt
+      endsAt
       name
       description
       location {
@@ -39,7 +41,8 @@ export const DeleteSession = gql`
   mutation DeleteSession($input: DeleteSessionInput!) {
     deleteSession(input: $input) {
       id
-      date
+      startsAt
+      endsAt
       name
       description
       location {

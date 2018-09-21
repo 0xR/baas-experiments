@@ -5,7 +5,8 @@ export const OnCreateSession = gql`
   subscription OnCreateSession {
     onCreateSession {
       id
-      date
+      startsAt
+      endsAt
       name
       description
       location {
@@ -22,7 +23,8 @@ export const OnUpdateSession = gql`
   subscription OnUpdateSession {
     onUpdateSession {
       id
-      date
+      startsAt
+      endsAt
       name
       description
       location {
@@ -39,7 +41,8 @@ export const OnDeleteSession = gql`
   subscription OnDeleteSession {
     onDeleteSession {
       id
-      date
+      startsAt
+      endsAt
       name
       description
       location {

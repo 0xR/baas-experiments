@@ -2,14 +2,16 @@
 //  This file was automatically generated and should not be edited.
 
 export type CreateSessionInput = {
-  date: string,
+  startsAt: string,
+  endsAt: string,
   name: string,
   description: string,
 };
 
 export type UpdateSessionInput = {
   id: string,
-  date?: string | null,
+  startsAt?: string | null,
+  endsAt?: string | null,
   name?: string | null,
   description?: string | null,
 };
@@ -20,7 +22,8 @@ export type DeleteSessionInput = {
 
 export type ModelSessionFilterInput = {
   id?: ModelIDFilterInput | null,
-  date?: ModelStringFilterInput | null,
+  startsAt?: ModelStringFilterInput | null,
+  endsAt?: ModelStringFilterInput | null,
   name?: ModelStringFilterInput | null,
   description?: ModelStringFilterInput | null,
   and?: Array< ModelSessionFilterInput | null > | null,
@@ -62,7 +65,8 @@ export type CreateSessionMutation = {
   createSession:  {
     __typename: "Session",
     id: string,
-    date: string,
+    startsAt: string,
+    endsAt: string,
     name: string,
     description: string,
     location:  {
@@ -85,7 +89,8 @@ export type UpdateSessionMutation = {
   updateSession:  {
     __typename: "Session",
     id: string,
-    date: string,
+    startsAt: string,
+    endsAt: string,
     name: string,
     description: string,
     location:  {
@@ -108,7 +113,8 @@ export type DeleteSessionMutation = {
   deleteSession:  {
     __typename: "Session",
     id: string,
-    date: string,
+    startsAt: string,
+    endsAt: string,
     name: string,
     description: string,
     location:  {
@@ -131,7 +137,8 @@ export type GetSessionQuery = {
   getSession:  {
     __typename: "Session",
     id: string,
-    date: string,
+    startsAt: string,
+    endsAt: string,
     name: string,
     description: string,
     location:  {
@@ -158,7 +165,8 @@ export type ListSessionsQuery = {
     items:  Array< {
       __typename: "Session",
       id: string,
-      date: string,
+      startsAt: string,
+      endsAt: string,
       name: string,
       description: string,
     } | null > | null,
@@ -170,7 +178,8 @@ export type OnCreateSessionSubscription = {
   onCreateSession:  {
     __typename: "Session",
     id: string,
-    date: string,
+    startsAt: string,
+    endsAt: string,
     name: string,
     description: string,
     location:  {
@@ -189,7 +198,8 @@ export type OnUpdateSessionSubscription = {
   onUpdateSession:  {
     __typename: "Session",
     id: string,
-    date: string,
+    startsAt: string,
+    endsAt: string,
     name: string,
     description: string,
     location:  {
@@ -208,7 +218,8 @@ export type OnDeleteSessionSubscription = {
   onDeleteSession:  {
     __typename: "Session",
     id: string,
-    date: string,
+    startsAt: string,
+    endsAt: string,
     name: string,
     description: string,
     location:  {

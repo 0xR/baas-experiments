@@ -5,7 +5,8 @@ export const GetSession = gql`
   query GetSession($id: ID!) {
     getSession(id: $id) {
       id
-      date
+      startsAt
+      endsAt
       name
       description
       location {
@@ -27,7 +28,8 @@ export const ListSessions = gql`
     listSessions(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        date
+        startsAt
+        endsAt
         name
         description
       }
