@@ -25,8 +25,26 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/baasexperiments-20180921102853-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apibaasexperiments"
 			},
-			"lastPushTimeStamp": "2018-09-21T08:52:15.904Z",
+			"lastPushTimeStamp": "2018-09-21T09:53:59.986Z",
 			"lastPushDirHash": "YzYhan5uJ3xHxRQf1HR9ezXnXRc="
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/baasexperiments-20180921102853-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2018-09-21T09:53:59.993Z",
+			"output": {
+				"S3BucketSecureURL": "https://baasexperiments-20180921115246--hostingbucket.s3.amazonaws.com",
+				"WebsiteURL": "http://baasexperiments-20180921115246--hostingbucket.s3-website-eu-west-1.amazonaws.com",
+				"Region": "eu-west-1",
+				"HostingBucketName": "baasexperiments-20180921115246--hostingbucket"
+			},
+			"lastPushDirHash": "Lex4uRozGvw1gjkmtKF8ka8BosY="
 		}
 	}
 }
