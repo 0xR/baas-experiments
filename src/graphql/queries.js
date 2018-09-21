@@ -37,3 +37,27 @@ export const ListSessions = gql`
     }
   }
 `;
+export const SearchSessions = gql`
+  query SearchSessions(
+    $filter: SearchableSessionFilterInput
+    $sort: SearchableSessionSortInput
+    $limit: Int
+    $nextToken: Int
+  ) {
+    searchSessions(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        startsAt
+        endsAt
+        name
+        description
+      }
+      nextToken
+    }
+  }
+`;

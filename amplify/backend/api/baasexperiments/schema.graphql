@@ -7,7 +7,7 @@ type Location {
   capacity: Int!
 }
 
-type Session @model {
+type Session @model @searchable {
   id: ID!
   startsAt: AWSDateTime!
   endsAt: AWSDateTime!
@@ -16,3 +16,4 @@ type Session @model {
   location: Location!
   attendees: [Attendee!]!
 }
+

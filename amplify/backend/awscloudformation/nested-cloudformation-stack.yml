@@ -84,10 +84,12 @@
 				"TemplateURL": "https://s3.amazonaws.com/baasexperiments-20180921102853-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"AppSyncApiName": "baasexperiments",
-					"schemaGraphql": "s3://baasexperiments-20180921102853-deployment/amplify-appsync-files/schema.graphql.1537529048861",
+					"ElasticSearchStreamingLambdaCodeS3Key": "amplify-appsync-files/python_streaming_function.zip",
+					"ElasticSearchStreamingLambdaCodeS3Bucket": "baasexperiments-20180921102853-deployment",
+					"schemaGraphql": "s3://baasexperiments-20180921102853-deployment/amplify-appsync-files/schema.graphql.1537530965218",
 					"ResolverBucket": "baasexperiments-20180921102853-deployment",
 					"ResolverRootKey": "amplify-appsync-files",
-					"DeploymentTimestamp": "1537529048861"
+					"DeploymentTimestamp": "1537530965218"
 				}
 			}
 		},

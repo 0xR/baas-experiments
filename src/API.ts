@@ -57,6 +57,61 @@ export type ModelStringFilterInput = {
   beginsWith?: string | null,
 };
 
+export type SearchableSessionFilterInput = {
+  id?: SearchableIDFilterInput | null,
+  startsAt?: SearchableStringFilterInput | null,
+  endsAt?: SearchableStringFilterInput | null,
+  name?: SearchableStringFilterInput | null,
+  description?: SearchableStringFilterInput | null,
+  and?: Array< SearchableSessionFilterInput | null > | null,
+  or?: Array< SearchableSessionFilterInput | null > | null,
+  not?: SearchableSessionFilterInput | null,
+};
+
+export type SearchableIDFilterInput = {
+  ne?: string | null,
+  eq?: string | null,
+  match?: string | null,
+  matchPhrase?: string | null,
+  matchPhrasePrefix?: string | null,
+  multiMatch?: string | null,
+  exists?: boolean | null,
+  wildcard?: string | null,
+  regexp?: string | null,
+};
+
+export type SearchableStringFilterInput = {
+  ne?: string | null,
+  eq?: string | null,
+  match?: string | null,
+  matchPhrase?: string | null,
+  matchPhrasePrefix?: string | null,
+  multiMatch?: string | null,
+  exists?: boolean | null,
+  wildcard?: string | null,
+  regexp?: string | null,
+};
+
+export type SearchableSessionSortInput = {
+  field?: SearchableSessionSortableFields | null,
+  direction?: SearchableSortDirection | null,
+};
+
+export enum SearchableSessionSortableFields {
+  id = "id",
+  startsAt = "startsAt",
+  endsAt = "endsAt",
+  name = "name",
+  description = "description",
+}
+
+
+export enum SearchableSortDirection {
+  asc = "asc",
+  desc = "desc",
+}
+
+
 export type CreateSessionMutationVariables = {
   input: CreateSessionInput,
 };
@@ -162,6 +217,28 @@ export type ListSessionsQueryVariables = {
 export type ListSessionsQuery = {
   listSessions:  {
     __typename: "ModelSessionConnection",
+    items:  Array< {
+      __typename: "Session",
+      id: string,
+      startsAt: string,
+      endsAt: string,
+      name: string,
+      description: string,
+    } | null > | null,
+    nextToken: string | null,
+  } | null,
+};
+
+export type SearchSessionsQueryVariables = {
+  filter?: SearchableSessionFilterInput | null,
+  sort?: SearchableSessionSortInput | null,
+  limit?: number | null,
+  nextToken?: number | null,
+};
+
+export type SearchSessionsQuery = {
+  searchSessions:  {
+    __typename: "SearchableSessionConnection",
     items:  Array< {
       __typename: "Session",
       id: string,
