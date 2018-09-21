@@ -1,0 +1,32 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "baasexperiments-20180921102853-authRole",
+			"UnauthRoleArn": "arn:aws:iam::213432432513:role/baasexperiments-20180921102853-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::213432432513:role/baasexperiments-20180921102853-authRole",
+			"Region": "eu-west-1",
+			"DeploymentBucketName": "baasexperiments-20180921102853-deployment",
+			"UnauthRoleName": "baasexperiments-20180921102853-unauthRole",
+			"StackName": "baasexperiments-20180921102853",
+			"StackId": "arn:aws:cloudformation:eu-west-1:213432432513:stack/baasexperiments-20180921102853/5d784b50-bd78-11e8-8c97-50faeb56c436"
+		}
+	},
+	"api": {
+		"baasexperiments": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "API_KEY",
+				"GraphQLAPIIdOutput": "e2knu7xnczarxc2d5dv3wbfpw4",
+				"GraphQLAPIEndpointOutput": "https://bs64u5ylr5gpvk3n6ce6nmg22i.appsync-api.eu-west-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-badewom35rh2td557yrj4o5bpy"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/baasexperiments-20180921102853-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apibaasexperiments"
+			},
+			"lastPushTimeStamp": "2018-09-21T08:52:15.904Z",
+			"lastPushDirHash": "YzYhan5uJ3xHxRQf1HR9ezXnXRc="
+		}
+	}
+}
