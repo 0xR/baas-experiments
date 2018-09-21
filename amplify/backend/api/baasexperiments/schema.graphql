@@ -1,0 +1,17 @@
+type Attendee {
+  name: String!
+}
+
+type Location {
+  name: String!
+  capacity: Int!
+}
+
+type Session @model {
+  id: ID!
+  date: AWSDate!
+  name: String!
+  description: String!
+  location: Location!
+  attendees: [Attendee!]!
+}
