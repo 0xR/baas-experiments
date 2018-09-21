@@ -1,10 +1,16 @@
 import React from 'react';
-import { Component, Fragment } from 'react';
+import { Fragment } from 'react';
 import Amplify, { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 import awsExports from './aws-exports';
 
 Amplify.configure(awsExports);
+
+const CreatedSessionSubscription = `subscription CreatedSession {
+  onCreateSession {
+    name
+  }
+}`;
 
 const SessionListQuery = `  query ListSessions(
     $filter: ModelSessionFilterInput
@@ -35,11 +41,11 @@ mutation CreateSession(
     startsAt: $startsAt
     endsAt: $endsAt
   }) {
-    id
-    endsAt
-        startsAt
-        name
-        description
+      id
+      endsAt
+      startsAt
+      name
+      description
   }
 }
 `;
@@ -80,7 +86,18 @@ class CreateSession extends React.Component {
 }
 
 const SessionList = () => (
-    <Connect query={graphqlOperation(SessionListQuery)}>
+    <Connect
+        query={graphqlOperation(SessionListQuery)}
+        subscription={graphqlOperation(CreatedSessionSubscription)}
+        onSubscriptionMsg={(prev, { onCreateSession }) => {
+            return {
+                listSessions: {
+                    ...prev.listSessions,
+                    items: [onCreateSession, ...prev.listSessions.items]
+                }
+            };
+        }}
+    >
         {data => <Json data={data} />}
     </Connect>
 );
